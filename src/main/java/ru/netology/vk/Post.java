@@ -17,10 +17,92 @@ public class Post {
     private int posterModeId; // Идентификатор темы постера
     private boolean commentsAllowed; // Разрешено ли комментировать пост
     private CommentsInfo[] commentsInfo; // Массив объектов комментариев к посту
-    private Attachement[] attachment; // Массив объектов вложения
+    private Attachments[] attachment; // Массив объектов вложения
     private int numberOfLikes; // Количество лайков
     private String[] whoLiked; // Массив Id кому понравился пост
     private int numberOfViews; // Сколько раз просматривали пост
+
+    // Поля, которые я сам не придумал и ПРИЧИНЫ
+
+    // Не знал, и не увидел, что запись может быть ответом на запись
+    private String replyOwnerId; // Идентификатор владельца записи, на которую была составлена текущая
+    private long replyPostId; // Идентификатор записи, в ответ на которую была составлена текущая
+
+    // Поторопился, полностью упустил реализацию некоторых моментов. Виноват
+    private int numberOfReposts; // Количество репостов
+    private boolean canPin; //  Может ли текущий пользователь закрепить запись
+    private boolean canDelete; // Может ли текущий пользователь удалить запись
+    private boolean canEdit; // Может ли текущий пользователь редактировать запись
+    private boolean isPinned; // Закреплена ли запись
+    private boolean isFavorite; // Добавлена ли запись в закладки
+
+    //Блоки данных, связанные с неидентифицированной мною логикой включать сюда не буду, а именно:
+    // с администрированием, с работой сообществ, с рекламой и донатом
+
+
+    public boolean isCanPin() {
+        return canPin;
+    }
+
+    public void setCanPin(boolean canPin) {
+        this.canPin = canPin;
+    }
+
+    public boolean isCanDelete() {
+        return canDelete;
+    }
+
+    public void setCanDelete(boolean canDelete) {
+        this.canDelete = canDelete;
+    }
+
+    public boolean isCanEdit() {
+        return canEdit;
+    }
+
+    public void setCanEdit(boolean canEdit) {
+        this.canEdit = canEdit;
+    }
+
+    public boolean isPinned() {
+        return isPinned;
+    }
+
+    public void setPinned(boolean pinned) {
+        isPinned = pinned;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
+    public String getReplyOwnerId() {
+        return replyOwnerId;
+    }
+
+    public void setReplyOwnerId(String replyOwnerId) {
+        this.replyOwnerId = replyOwnerId;
+    }
+
+    public long getReplyPostId() {
+        return replyPostId;
+    }
+
+    public void setReplyPostId(long replyPostId) {
+        this.replyPostId = replyPostId;
+    }
+
+    public int getNumberOfReposts() {
+        return numberOfReposts;
+    }
+
+    public void setNumberOfReposts(int numberOfReposts) {
+        this.numberOfReposts = numberOfReposts;
+    }
 
     public Calendar getPostDateAndTime() {
         return postDateAndTime;
@@ -30,15 +112,11 @@ public class Post {
         this.postDateAndTime = postDateAndTime;
     }
 
-    public void setAttachment(Attachement[] attachment) {
-        this.attachment = attachment;
-    }
-
-    public Attachement[] getAttachment() {
+    public Attachments[] getAttachment() {
         return attachment;
     }
 
-    public void setAttachment(Attachement[] attachement) {
+    public void setAttachment(Attachments[] attachement) {
         this.attachment = attachement;
     }
 
